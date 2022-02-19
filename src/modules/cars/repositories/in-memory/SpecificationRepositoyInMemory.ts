@@ -10,10 +10,11 @@ class SpecificationRepositoryInMemory implements ISpecificationsRepository {
     async create({
         name,
         description,
-    }: ICreateSpecificationDTO): Promise<void> {
+    }: ICreateSpecificationDTO): Promise<Specification> {
         const specification = new Specification();
-        Object.assign(specification, description, name);
+        Object.assign(specification, { description, name });
         this.specifications.push(specification);
+        return specification;
     }
     list(): Promise<Specification[]> {
         throw new Error("Method not implemented.");
