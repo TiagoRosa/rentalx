@@ -21,10 +21,10 @@ describe("List Categories", () => {
         `);
     });
 
-    // afterAll(async () => {
-    //     await connection.dropDatabase();
-    //     await connection.close();
-    // });
+    afterAll(async () => {
+        await connection.dropDatabase();
+        await connection.close();
+    });
 
     it("Should be able to list all categories", async () => {
         const responseToken = await request(app).post("/sessions").send({
